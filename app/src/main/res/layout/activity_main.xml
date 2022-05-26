@@ -6,6 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/imageView_gs_warning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:alpha="0"
+        app:layout_constraintBottom_toTopOf="@+id/textView_Fuel"
+        app:layout_constraintEnd_toEndOf="@+id/textView_Gas"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Electricty"
+        app:srcCompat="@android:drawable/ic_notification_overlay" />
+
+    <ImageView
+        android:id="@+id/imageView_fl_warning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:alpha="0"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_Fuel"
+        app:layout_constraintEnd_toEndOf="@+id/textView_Fuel"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Gas"
+        app:srcCompat="@android:drawable/ic_notification_overlay" />
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
@@ -106,6 +128,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_score" />
+
+    <ImageView
+        android:id="@+id/imageView_el_warning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView_Gas"
+        app:layout_constraintEnd_toEndOf="@+id/textView_Electricty"
+        app:layout_constraintTop_toTopOf="@+id/textView_Electricty"
+        android:alpha="0"
+        app:srcCompat="@android:drawable/ic_notification_overlay" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
