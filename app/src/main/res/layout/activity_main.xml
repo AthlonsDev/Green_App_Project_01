@@ -99,10 +99,12 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
-        android:text="Button"
+        android:background="@android:color/holo_green_light"
+        android:text="Calculate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_Fuel" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_Fuel"
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/textView_score"
@@ -139,6 +141,16 @@
         app:layout_constraintTop_toTopOf="@+id/textView_Electricty"
         android:alpha="0"
         app:srcCompat="@android:drawable/ic_notification_overlay" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Check Co2"
+        app:layout_constraintBottom_toTopOf="@+id/textView_score"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

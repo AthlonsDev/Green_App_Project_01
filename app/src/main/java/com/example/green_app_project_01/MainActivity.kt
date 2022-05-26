@@ -1,5 +1,6 @@
 package com.example.green_app_project_01
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
@@ -14,6 +15,11 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener({
             getCarbonFootprint()
         })
+
+        button2.setOnClickListener {
+            val intent = Intent(this, Co2CheckActivity::class.java)
+            startActivity(intent)
+        }
 
 
     }
