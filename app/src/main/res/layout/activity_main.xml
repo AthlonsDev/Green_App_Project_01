@@ -6,6 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome To Green_App"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.106" />
+
     <ImageView
         android:id="@+id/imageView_gs_warning"
         android:layout_width="wrap_content"
@@ -27,19 +57,6 @@
         app:layout_constraintEnd_toEndOf="@+id/textView_Fuel"
         app:layout_constraintTop_toBottomOf="@+id/textView_Gas"
         app:srcCompat="@android:drawable/ic_notification_overlay" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome To Green_App"
-        android:textStyle="bold"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.106" />
 
     <TextView
         android:id="@+id/textView"
