@@ -36,6 +36,38 @@ class Co2CheckActivity: AppCompatActivity() {
             checkBox_petrol.isChecked = false
         }
 
+
+        checkBox_oil.setOnClickListener {
+            checkBox_coal.isChecked = false
+            checkBox_nuclear.isChecked = false
+            checkBox_wind.isChecked = false
+            checkBox_solar.isChecked = false
+        }
+        checkBox_coal.setOnClickListener {
+            checkBox_oil.isChecked = false
+            checkBox_nuclear.isChecked = false
+            checkBox_wind.isChecked = false
+            checkBox_solar.isChecked = false
+        }
+        checkBox_nuclear.setOnClickListener {
+            checkBox_coal.isChecked = false
+            checkBox_oil.isChecked = false
+            checkBox_wind.isChecked = false
+            checkBox_solar.isChecked = false
+        }
+        checkBox_wind.setOnClickListener {
+            checkBox_coal.isChecked = false
+            checkBox_nuclear.isChecked = false
+            checkBox_oil.isChecked = false
+            checkBox_solar.isChecked = false
+        }
+        checkBox_solar.setOnClickListener {
+            checkBox_coal.isChecked = false
+            checkBox_nuclear.isChecked = false
+            checkBox_wind.isChecked = false
+            checkBox_oil.isChecked = false
+        }
+
     }
 
     override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
@@ -67,33 +99,50 @@ class Co2CheckActivity: AppCompatActivity() {
     }
 
     private fun calculateCo2() {
-        val oilRates = 0.650
-        val coalRates = 0.9
-        val nucRates = 0.005
-        val windRates = 0.004
-        val solRates = 0.005
+        var source = 0.0
+        if (checkBox_oil.isChecked) {
+            source = 0.650
+        }
+        else if (checkBox_coal.isChecked) {
+            source = 0.900
+        }
+        else if (checkBox_nuclear.isChecked) {
+            source = 0.005
+        }
+        else if (checkBox_wind.isChecked) {
+            source = 0.004
+        }
+        else if (checkBox_solar.isChecked) {
+            source = 0.005
+        }
+//        val oilRates = 0.650
+//        val coalRates = 0.9
+//        val nucRates = 0.005
+//        val windRates = 0.004
+//        val solRates = 0.005
 
         val kwh = editText_kwh.text.toString().toInt()
 
-        val co2Ton = (kwh * oilRates).roundToInt()
+        val co2Ton = (kwh * source).roundToInt()
 
-        var fuelPerLitre = 652+1740
-        if (checkBox_petrol.isChecked) {
-            fuelPerLitre = 652+1740
+        var fuel = 0
+        if (fuelCo2_edit.text.isNotEmpty()) {
+            var fuelPerLitre = 0
+            if (checkBox_petrol.isChecked) {
+                fuelPerLitre = 652 + 1740
+
+            } else if (checkBox_diesel.isChecked) {
+                fuelPerLitre = 720 + 1920
+
+            } else if (checkBox_lpg.isChecked) {
+                fuelPerLitre = 454 + 1211
+
+            }
+
+            val inputLitres = fuelCo2_edit.text.toString().toInt()
+            val fuel = fuelPerLitre * inputLitres
 
         }
-        else if (checkBox_diesel.isChecked) {
-            fuelPerLitre = 720+1920
-
-        }
-        else if (checkBox_lpg.isChecked) {
-            fuelPerLitre = 454+1211
-
-        }
-
-        val inputLitres = fuelCo2_edit.text.toString().toInt()
-        val fuel = fuelPerLitre*inputLitres
-
 
         val result = co2Ton + fuel
 //        textView_co2_score.text = "You consume an avarage of ${kw.toString()} Tonnes of Co2 every day"

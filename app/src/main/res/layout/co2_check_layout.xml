@@ -21,7 +21,6 @@
         android:id="@+id/editText_kwh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="Enter daily Kw/h  use"
         android:inputType="textPersonName"
@@ -29,7 +28,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_home" />
+        app:layout_constraintTop_toBottomOf="@+id/checkBox_oil" />
 
     <Button
         android:id="@+id/button_co2"
@@ -70,6 +69,18 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
+        android:id="@+id/textView_home4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Source"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_home" />
+
+    <TextView
         android:id="@+id/textView_home2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -103,6 +114,7 @@
         android:ems="10"
         android:hint="Enter Daily Fuel Consumption"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -117,6 +129,55 @@
         app:layout_constraintEnd_toStartOf="@+id/checkBox_diesel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/checkBox_diesel" />
+
+    <CheckBox
+        android:id="@+id/checkBox_oil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="Oil"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_home4" />
+
+    <CheckBox
+        android:id="@+id/checkBox_coal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:padding="8dp"
+        android:text="Coal"
+        app:layout_constraintStart_toEndOf="@+id/checkBox_oil"
+        app:layout_constraintTop_toBottomOf="@+id/textView_home4" />
+
+    <CheckBox
+        android:id="@+id/checkBox_nuclear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:padding="8dp"
+        android:text="Nuclear"
+        app:layout_constraintStart_toEndOf="@+id/checkBox_coal"
+        app:layout_constraintTop_toBottomOf="@+id/textView_home4" />
+
+    <CheckBox
+        android:id="@+id/checkBox_wind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:padding="8dp"
+        android:text="Wind"
+        app:layout_constraintStart_toEndOf="@+id/checkBox_nuclear"
+        app:layout_constraintTop_toBottomOf="@+id/textView_home4" />
+
+    <CheckBox
+        android:id="@+id/checkBox_solar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:padding="8dp"
+        android:text="Solar"
+        app:layout_constraintStart_toEndOf="@+id/checkBox_wind"
+        app:layout_constraintTop_toTopOf="@+id/checkBox_wind" />
 
     <CheckBox
         android:id="@+id/checkBox_diesel"
