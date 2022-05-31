@@ -77,8 +77,20 @@ class MainActivity : AppCompatActivity() {
         val electricityScore = validation(textView_Electricty.text.toString(), textView_Electricty)
         val gasScore = validation(textView_Gas.text.toString(), textView_Gas)
         val fuelScore = validation(textView_Fuel.text.toString(), textView_Fuel)
+        val flightNumb = validation(textView_flights.text.toString(), textView_flights)
 
-        val score = electricityScore*105 + gasScore*105 + fuelScore*113
+        var flightResult = flightNumb*1100
+        if (switch_flight.isChecked) {
+            flightResult = flightNumb*4400
+        }
+        var paperRec = 184
+        var metalRec = 166
+        if (switch_paper.isChecked)
+            paperRec = 0
+        if (switch_metal.isChecked)
+            metalRec = 0
+
+        val score = electricityScore*105 + gasScore*105 + fuelScore*113 + flightResult + paperRec + metalRec
         textView_score.text = score.toString()
         textView_results.text = processResults(score)
     }
@@ -103,6 +115,7 @@ class MainActivity : AppCompatActivity() {
 
 
         return message
+
     }
 
 
