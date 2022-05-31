@@ -4,9 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.MotionEvent
-import android.view.View
-import android.view.WindowManager
+import android.view.*
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -21,12 +19,7 @@ class MainActivity : AppCompatActivity() {
             getCarbonFootprint()
         })
 
-        button2.setOnClickListener {
-            val intent = Intent(this, Co2CheckActivity::class.java)
-            startActivity(intent)
-        }
-
-
+        setTitle("Welcome to Green_App")
     }
 
     override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
@@ -119,4 +112,18 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.nav_bar, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.menu_check_co2 -> {
+                val intent = Intent(this, Co2CheckActivity::class.java)
+                startActivity(intent)
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
 }

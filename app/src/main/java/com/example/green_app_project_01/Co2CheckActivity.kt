@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Debug
 import android.os.PersistableBundle
 import android.util.Log
+import android.view.Menu
 import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
@@ -18,10 +19,31 @@ class Co2CheckActivity: AppCompatActivity() {
 
         setContentView(R.layout.co2_check_layout)
 
-//        Run The Calculation Function
+        manageCheckBoxes()
+
+        //        Run The Calculation Function
         button_co2.setOnClickListener {
             calculateCo2()
         }
+    }
+
+//    Close Current Activity Pressing Back Button
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+    }
+//  Hide Soft Keyboard Upon Touch Event
+    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+        if (currentFocus != null) {
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
+        }
+        return super.dispatchTouchEvent(ev)
+    }
+
+    private fun manageCheckBoxes() {
+
+
 //      Choose Source of Fuel
         checkBox_petrol.setOnClickListener {
             checkBox_diesel.isChecked = false
@@ -69,14 +91,6 @@ class Co2CheckActivity: AppCompatActivity() {
         }
 
     }
-//  Hide Soft Keyboard Upon Touch Event
-    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
-        if (currentFocus != null) {
-            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
-        }
-        return super.dispatchTouchEvent(ev)
-    }
 
     private fun calculateCo2() {
         var source = 0.0
@@ -122,5 +136,8 @@ class Co2CheckActivity: AppCompatActivity() {
         val result = co2Ton + fuel
         textView_co2_score.text = "You consume an avarage of ${result.toString()} Tonnes of Co2 every day"
     }
+
+
+
 
 }

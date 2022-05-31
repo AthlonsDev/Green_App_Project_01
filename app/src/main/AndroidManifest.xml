@@ -13,6 +13,7 @@
             android:name=".MainActivity"
             android:windowSoftInputMode="stateVisible|adjustResize"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -21,6 +22,12 @@
         <activity android:name=".Co2CheckActivity"
             android:windowSoftInputMode="stateVisible|adjustResize"
             >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"
+                >
+
+            </meta-data>
 
         </activity>
     </application>
