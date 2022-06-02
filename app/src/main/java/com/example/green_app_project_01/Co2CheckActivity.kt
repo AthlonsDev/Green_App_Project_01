@@ -19,6 +19,8 @@ class Co2CheckActivity: AppCompatActivity() {
 
         setContentView(R.layout.co2_check_layout)
 
+        setTitle("Daily Co2")
+
         manageCheckBoxes()
 
         //        Run The Calculation Function
@@ -94,20 +96,22 @@ class Co2CheckActivity: AppCompatActivity() {
 
     private fun calculateCo2() {
         var source = 0.0
-        if (checkBox_oil.isChecked) {
-            source = 0.650
-        }
-        else if (checkBox_coal.isChecked) {
-            source = 0.900
-        }
-        else if (checkBox_nuclear.isChecked) {
-            source = 0.005
-        }
-        else if (checkBox_wind.isChecked) {
-            source = 0.004
-        }
-        else if (checkBox_solar.isChecked) {
-            source = 0.005
+        when {
+            checkBox_oil.isChecked -> {
+                source = 0.650
+            }
+            checkBox_coal.isChecked -> {
+                source = 0.900
+            }
+            checkBox_nuclear.isChecked -> {
+                source = 0.005
+            }
+            checkBox_wind.isChecked -> {
+                source = 0.004
+            }
+            checkBox_solar.isChecked -> {
+                source = 0.005
+            }
         }
 
         val kwh = editText_kwh.text.toString().toInt()
@@ -117,15 +121,19 @@ class Co2CheckActivity: AppCompatActivity() {
         var fuel = 0
         if (fuelCo2_edit.text.isNotEmpty()) {
             var fuelPerLitre = 0
-            if (checkBox_petrol.isChecked) {
-                fuelPerLitre = 652 + 1740
+            when {
+                checkBox_petrol.isChecked -> {
+                    fuelPerLitre = 652 + 1740
 
-            } else if (checkBox_diesel.isChecked) {
-                fuelPerLitre = 720 + 1920
+                }
+                checkBox_diesel.isChecked -> {
+                    fuelPerLitre = 720 + 1920
 
-            } else if (checkBox_lpg.isChecked) {
-                fuelPerLitre = 454 + 1211
+                }
+                checkBox_lpg.isChecked -> {
+                    fuelPerLitre = 454 + 1211
 
+                }
             }
 
             val inputLitres = fuelCo2_edit.text.toString().toInt()
@@ -134,7 +142,7 @@ class Co2CheckActivity: AppCompatActivity() {
         }
 
         val result = co2Ton + fuel
-        textView_co2_score.text = "You consume an avarage of ${result.toString()} Tonnes of Co2 every day"
+        textView_co2_score.text = "You consume an average of $result Tonnes of Co2 every day"
     }
 
 
