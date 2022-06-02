@@ -40,13 +40,6 @@ class MainActivity : AppCompatActivity() {
         return super.dispatchTouchEvent(ev)
     }
 
-    fun convertStrings(text: String): Int {
-
-        val number = text.toInt()
-
-        return number
-    }
-
 
     private fun validation(text: String, textView: TextView): Int {
         var textScore = 0
@@ -105,7 +98,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun processResults(results: Int, value: String): String {
-        var message: String = ""
+        var message = ""
         val ideal = results in 6000..15999
         val average = results in 16000..22000
         val high: Boolean = results >= 22000

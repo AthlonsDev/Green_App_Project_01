@@ -1,5 +1,6 @@
 package com.example.green_app_project_01
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.os.Debug
@@ -94,6 +95,7 @@ class Co2CheckActivity: AppCompatActivity() {
 
     }
 
+    @SuppressLint("SetTextI18n")
     private fun calculateCo2() {
         var source = 0.0
         when {
@@ -137,15 +139,11 @@ class Co2CheckActivity: AppCompatActivity() {
             }
 
             val inputLitres = fuelCo2_edit.text.toString().toInt()
-            val fuel = fuelPerLitre * inputLitres
+            fuel = fuelPerLitre * inputLitres
 
         }
 
         val result = co2Ton + fuel
         textView_co2_score.text = "You consume an average of $result Tonnes of Co2 every day"
     }
-
-
-
-
 }
