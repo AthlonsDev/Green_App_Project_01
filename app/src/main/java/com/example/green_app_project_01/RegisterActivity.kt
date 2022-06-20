@@ -12,17 +12,17 @@ class RegisterActivity: AppCompatActivity() {
         setContentView(R.layout.register_layout)
 
 
-        register_button.setOnClickListener {
+        login_button.setOnClickListener {
             registerUserToFirebase()
         }
 
-        link_to_login_text.setOnClickListener {
+        link_to_register_text.setOnClickListener {
             //TODO: Go to Login Activity
         }
     }
     private fun registerUserToFirebase() {
-        val email = editTextEmailAddress.text
-        val password = editTextPassword.text
+        val email = editTextEmailAddress_login.text
+        val password = editTextPassword_login.text
 //        val proImage = profile_imageview
 
         Log.d("login", email.toString())
