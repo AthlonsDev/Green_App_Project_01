@@ -1,6 +1,7 @@
 package com.example.green_app_project_01
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.register_layout.*
 
@@ -24,6 +25,7 @@ class RegisterActivity: AppCompatActivity() {
         val password = editTextPassword.text
 //        val proImage = profile_imageview
 
+        Log.d("login", email.toString())
         //TODO: Proceed to Register User to Firebase
     }
 
