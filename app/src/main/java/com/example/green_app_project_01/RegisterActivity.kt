@@ -24,6 +24,7 @@ class RegisterActivity: AppCompatActivity() {
 
         login_button.setOnClickListener {
             registerUserToFirebase()
+            Log.d("firebase", "button pressed")
         }
 
         link_to_register_text.setOnClickListener {
@@ -57,11 +58,13 @@ class RegisterActivity: AppCompatActivity() {
         val password = editTextPassword.text.toString()
 //        val proImage = profile_imageview
 
+
+
         if(email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Please enter text in email/password", Toast.LENGTH_SHORT).show()
         }
 
-        Log.d("login", email.toString())
+        Log.d("firebase", email.toString())
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password).addOnCompleteListener {
 
             if(it.isSuccessful) return@addOnCompleteListener
