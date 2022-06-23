@@ -2,6 +2,7 @@ package com.example.green_app_project_01
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -42,16 +43,13 @@ class RegisterActivity: AppCompatActivity() {
             selectedPhotoUri = data.data
             val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, selectedPhotoUri)
             profile_imageview.setImageBitmap(bitmap)
-           // select_photo_button.alpha = 0F
+            select_photo_button.alpha = 0F
 
-//            val bitmapDrawable = BitmapDrawable(bitmap)
-//            photo_circle_image_view.setImageDrawable(bitmapDrawable)
+            val bitmapDrawable = BitmapDrawable(bitmap)
+            select_photo_button.setImageDrawable(bitmapDrawable)
 
         }
     }
-
-
-
 
     private fun registerUserToFirebase() {
         val email = editTextEmailAddress.text.toString()
