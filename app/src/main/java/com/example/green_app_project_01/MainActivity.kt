@@ -8,6 +8,9 @@ import android.view.*
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.green_app_project_01.models.Score
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -95,6 +98,7 @@ class MainActivity : AppCompatActivity() {
         val score = electricityScore*105 + gasScore*105 + fuelScore*113 + flightResult + paperRec + metalRec
         textView_score.text = score.toString()
         textView_results.text = processResults(score, highestValue)
+        uploadDataToFirebase(score)
     }
 
     private fun processResults(results: Int, value: String): String {
@@ -120,7 +124,17 @@ class MainActivity : AppCompatActivity() {
         }
 
         return message
+    }
 
+    private fun uploadDataToFirebase(score: Int) {
+        val fromId = FirebaseAuth.getInstance().uid
+        val ref = FirebaseDatabase.getInstance().getReference("/$fromId/Scores").push()
+
+        val personalScore = Score(score)
+        ref.setValue(personalScore)
+            .addOnSuccessListener {
+                Log.d("firebase", "Data sent to Database")
+            }
     }
 
     private fun findHighest(e: Int, g: Int, f: Int): String {
