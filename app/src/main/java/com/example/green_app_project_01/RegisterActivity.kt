@@ -23,7 +23,7 @@ class RegisterActivity: AppCompatActivity() {
         setContentView(R.layout.register_layout)
 
 
-        login_button.setOnClickListener {
+        register_button.setOnClickListener {
             registerUserToFirebase()
             Log.d("firebase", "button pressed")
         }
