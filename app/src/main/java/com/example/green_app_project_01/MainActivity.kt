@@ -30,7 +30,8 @@ class MainActivity : AppCompatActivity() {
 //        TODO:Upload Data To Database
 //        TODO:Show Personal Scores Connects to Social Apps
 //        TODO:Gather Relevant News and Show them Using Recycler View
-//        TODO:UI Design
+//
+    //        TODO:UI Design
 //        TODO:Add Achievements and/or badges
 
     }
@@ -130,7 +131,7 @@ class MainActivity : AppCompatActivity() {
         val fromId = FirebaseAuth.getInstance().uid
         val ref = FirebaseDatabase.getInstance().getReference("/$fromId/Scores").push()
 
-        val personalScore = Score(score)
+        val personalScore = Score(score, System.currentTimeMillis())
         ref.setValue(personalScore)
             .addOnSuccessListener {
                 Log.d("firebase", "Data sent to Database")
