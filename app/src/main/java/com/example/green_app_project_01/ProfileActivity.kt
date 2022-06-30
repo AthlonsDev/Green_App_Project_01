@@ -3,13 +3,19 @@ package com.example.green_app_project_01
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.example.green_app_project_01.models.Score
 import com.example.green_app_project_01.models.User
+import com.example.green_app_project_01.views.ScoreItems
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.profile_layout.*
+import kotlin.collections.forEach as forEach1
+
 
 class ProfileActivity: AppCompatActivity() {
 
@@ -19,8 +25,11 @@ class ProfileActivity: AppCompatActivity() {
         setContentView(R.layout.profile_layout)
 //        Fetch profile image, userame...
         fetchData()
-//        Fetch Data and show it in a recycler view
+//        Setup Recycler View with Groupie Library
+        var adapter = GroupAdapter<GroupieViewHolder>()
+        adapter = GroupAdapter<GroupieViewHolder>()
 
+        profile_recycler_view.adapter = adapter
     }
 
     private fun fetchData() {
@@ -42,9 +51,15 @@ class ProfileActivity: AppCompatActivity() {
     }
 
     private fun showDataInRecView(snapshot: DataSnapshot) {
-        snapshot.children.forEach {
+        snapshot.children.forEach1 {
+            var adapter = GroupAdapter<GroupieViewHolder>()
+
             Log.d("Firebase", it.toString())
 //            Use Groupie to Load Data into Recycler View
+            val userScore = it.getValue(Score::class.java)
+            if (userScore != null) {
+//                adapter.add(ScoreItems(score))
+            }
         }
     }
 }
