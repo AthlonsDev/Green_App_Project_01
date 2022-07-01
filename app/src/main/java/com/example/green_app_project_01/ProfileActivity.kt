@@ -58,7 +58,7 @@ class ProfileActivity: AppCompatActivity() {
 //            Use Groupie to Load Data into Recycler View
             val userScore = it.getValue(Score::class.java)
             if (userScore != null) {
-//                adapter.add(ScoreItems(score))
+                adapter.add(ScoreItems(userScore))
             }
         }
     }
