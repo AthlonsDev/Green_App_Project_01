@@ -168,6 +168,10 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this, Co2CheckActivity::class.java)
                 startActivity(intent)
             }
+            R.id.menu_profile -> {
+                val intent = Intent(this, ProfileActivity::class.java)
+                startActivity(intent)
+            }
         }
         return super.onOptionsItemSelected(item)
     }

@@ -22,6 +22,8 @@ class ProfileActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        setTitle("Profile")
+
         setContentView(R.layout.profile_layout)
 //        Fetch profile image, userame...
         fetchData()
@@ -30,6 +32,11 @@ class ProfileActivity: AppCompatActivity() {
         adapter = GroupAdapter<GroupieViewHolder>()
 
         profile_recycler_view.adapter = adapter
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
     }
 
     private fun fetchData() {
